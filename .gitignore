@@ -1,0 +1,31 @@
+/target
+*.lock
+!Cargo.lock
+**/*.rs.bk
+*.pdb
+.DS_Store
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Coverage
+target/llvm-cov/
+
+# Fuzz
+corpus/
+artifacts/
+
+# Environment
+.env
+.env.local
+
+# Node (if using any JS tools)
+node_modules/
+
+# Podman / Docker volumes
+volumes/
+
+# Local data
+data/
+logs/

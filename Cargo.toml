@@ -1,0 +1,91 @@
+[workspace]
+resolver = "3"
+members = [
+    "crates/quant-patterns",
+    "crates/quant-core",
+    "crates/quant-indicators",
+    "crates/quant-data",
+    "crates/quant-ibkr",
+    "crates/quant-backtest",
+    "crates/quant-risk",
+    "crates/quant-execution",
+    "crates/quant-cli",
+    "crates/quant-book",
+]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2024"
+authors = ["Kevin Couton <kevin.couton@gmail.com>"]
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/kevincouton/ferrous-quant"
+rust-version = "1.85"
+
+[workspace.dependencies]
+# Core async runtime
+tokio = { version = "1.44", features = ["full"] }
+tokio-util = "0.7"
+
+# Serialization
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+toml = "0.8"
+
+# Error handling
+thiserror = "2.0"
+anyhow = "1.0"
+
+# Logging & tracing
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter", "fmt"] }
+
+# Time
+chrono = { version = "0.4", features = ["serde"] }
+
+# Numerical
+rust_decimal = { version = "1.36", features = ["mathops", "serde"] }
+num-traits = "0.2"
+statrs = "0.18"
+
+# Data structures
+indexmap = "2.7"
+
+# Concurrency
+crossbeam = "0.8"
+parking_lot = "0.12"
+
+# HTTP / Web
+reqwest = { version = "0.12", features = ["json", "rustls-tls"] }
+axum = "0.8"
+
+# CLI
+clap = { version = "4.5", features = ["derive"] }
+
+# Testing
+mockall = "0.13"
+proptest = "1.6"
+criterion = { version = "0.5", features = ["html_reports"] }
+
+# Async traits
+async-trait = "0.1"
+
+# Workspace internal dependencies
+quant-patterns = { path = "crates/quant-patterns" }
+quant-core = { path = "crates/quant-core" }
+quant-indicators = { path = "crates/quant-indicators" }
+quant-data = { path = "crates/quant-data" }
+quant-ibkr = { path = "crates/quant-ibkr" }
+quant-backtest = { path = "crates/quant-backtest" }
+quant-risk = { path = "crates/quant-risk" }
+quant-execution = { path = "crates/quant-execution" }
+
+[profile.release]
+opt-level = 3
+lto = "fat"
+codegen-units = 1
+panic = "abort"
+strip = true
+
+[profile.bench]
+opt-level = 3
+debug = true
