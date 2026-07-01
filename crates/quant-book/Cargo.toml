@@ -1,0 +1,51 @@
+[package]
+name = "quant-book"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+repository.workspace = true
+rust-version.workspace = true
+description = "Educational runnable examples for quantitative finance in Rust"
+readme = "README.md"
+keywords = ["quant", "education", "examples", "finance"]
+categories = ["finance"]
+
+[[bin]]
+name = "ch01_design_patterns"
+path = "src/ch01_design_patterns.rs"
+
+[[bin]]
+name = "ch02_market_data"
+path = "src/ch02_market_data.rs"
+
+[[bin]]
+name = "ch03_technical_indicators"
+path = "src/ch03_technical_indicators.rs"
+
+[[bin]]
+name = "ch04_backtesting"
+path = "src/ch04_backtesting.rs"
+
+[[bin]]
+name = "ch05_risk_management"
+path = "src/ch05_risk_management.rs"
+
+[[bin]]
+name = "ch06_ibkr_integration"
+path = "src/ch06_ibkr_integration.rs"
+
+[dependencies]
+quant-core = { workspace = true }
+quant-patterns = { workspace = true }
+quant-indicators = { workspace = true }
+quant-data = { workspace = true }
+quant-ibkr = { workspace = true }
+quant-backtest = { workspace = true }
+quant-risk = { workspace = true }
+quant-execution = { workspace = true }
+anyhow = { workspace = true }
+rust_decimal = { workspace = true }
+tokio = { workspace = true }
+tracing = { workspace = true }
+tracing-subscriber = { workspace = true }
